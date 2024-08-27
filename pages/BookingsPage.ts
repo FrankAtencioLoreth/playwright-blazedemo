@@ -1,6 +1,6 @@
 import { BookingsLocators } from './locators/BookingsLocators';
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from "./basePage";
+import { BasePage } from './basePage';
 
 export class BookingsPage extends BasePage {
 
