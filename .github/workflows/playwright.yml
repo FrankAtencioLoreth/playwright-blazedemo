@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: 20.12.2 #Versión de node
       - name: Install dependencies
-          run: npm ci ## Dependencias de CI
-      - name: Install Playwright Browsers 
-          run: npx playwright install --with-deps ## Instalación de navegadores
+        run: npm ci #Install CI dependencies
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps ## Instalación de navegadores
       - name: Run Playwright tests
-          run: npx Playwright test ## Comando de ejecución de pruebas
+        run: npx Playwright test ## Comando de ejecución de pruebas
       - uses: actions/upload-artifact@v4
         if: always()
         with:
