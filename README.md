@@ -36,6 +36,14 @@ To run a specific test:
 npx playwright test --grep @TC_001
   ```
 
+## Running a Specific environment
+
+```bash
+ npm run env:qa => "cross-env test_env=qa npx playwright test"
+ npm run env:dev => "cross-env test_env=development npx playwright test"
+ npm run env:prod => "cross-env test_env=production npx playwright test"
+```
+
 # Viewing Test Results
 
 After running tests, you can view the results:
