@@ -7,19 +7,19 @@ on:
     branches: [ main, master, qa]
 jobs:
   test:
-    timeout-minutes: 60 ## Tiempo maximo de pruebas
-    runs-on: ubuntu-latest ## Maquina virtual donde se ejecutaran las pruebas
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2 #Versión de node
+          node-version: 20.12.2
       - name: Install dependencies
-        run: npm ci #Install CI dependencies
+        run: npm ci
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps ## Instalación de navegadores
+        run: npx playwright install --with-deps
       - name: Run playwright tests on QA
-        run: npm run env:qa ## Comando de ejecución de pruebas
+        run: npm run env:qa
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
