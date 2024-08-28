@@ -1,3 +1,9 @@
+/**
+ * BookingsLocators Object
+ * 
+ * This object contains a collection of locators used to identify and interact with elements on the booking-related pages of a web application.
+ * These locators can be used in test scripts to perform actions such as selecting options, filling out forms, and verifying messages.
+ */
 export const BookingsLocators = {
     index: '/',
     fromPortSelect: 'select[name="fromPort"]',

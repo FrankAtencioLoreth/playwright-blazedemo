@@ -2,8 +2,15 @@ import { BookingsLocators } from './locators/BookingsLocators';
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
 
+/**
+ * BookingsPage Class
+ * 
+ * This class extends the BasePage and provides specific methods and locators to interact with the booking process on a web application. 
+ * It encapsulates the actions required to select a destination, fill out personal information, and confirm a booking.
+ */
 export class BookingsPage extends BasePage {
 
+    // Locators for elements on the bookings page
     private readonly index: Locator;
     private readonly fromPortSelect: Locator;
     private readonly toPortSelect: Locator;
@@ -22,6 +29,13 @@ export class BookingsPage extends BasePage {
     private readonly rememberMeCheck: Locator;
     private readonly purchaseMessage: Locator;
 
+    /**
+     * Constructor for the BookingsPage class.
+     * 
+     * @param page - The Playwright `Page` object representing the browser tab.
+     * 
+     * Initializes locators for the elements on the bookings page using the `BookingsLocators` object.
+     */
     constructor(page: Page) {
         super(page);
         this.index = page.locator(BookingsLocators.index);
@@ -43,16 +57,31 @@ export class BookingsPage extends BasePage {
         this.purchaseMessage = page.locator(BookingsLocators.purchaseMessage);
     }
 
+    /**
+     * Selects a departure and destination port, then submits the selection.
+     * 
+     * @returns A promise that resolves when the selection and submission are complete.
+     */
     async selectDestiny(): Promise<void>{
         await this.selectOption(this.fromPortSelect, 'Paris');
         await this.selectOption(this.toPortSelect, 'Buenos Aires');
         await this.clickOn(this.submitButton);
     }
 
+    /**
+     * Verifies that the booking confirmation message is visible on the page.
+     * 
+     * @returns A promise that resolves when the confirmation message is verified to be visible.
+     */
     async confirmationBooking(): Promise<void> {
         await this.expectVisible(this.purchaseMessage);
     }
 
+    /**
+     * Fills in the personal information required for the booking, selects a flight, and submits the form.
+     * 
+     * @returns A promise that resolves when the personal information has been filled, and the form has been submitted.
+     */
     async fillPersonalInformation(): Promise<void> {
         await this.clickOn(this.chooseFlightButton);
         await this.fillField(this.nameTextBox, 'Frank Atencio Loreth');
