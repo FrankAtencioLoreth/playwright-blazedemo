@@ -1,17 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { BookingsPage } from '../pages/BookingsPage';
 import Environment from '../utils/Environment';
+import { BasePage } from '../pages/BasePage';
 
 test.beforeEach( async({ page }) => {
 
     console.log(`Test starter with BASE URL: ${ Environment.BASEURL }`);
-    console.log(`Test starter with USERNAME: ${ Environment.USERNAME }`);
-    console.log(`Test starter with PASSWORD: ${ Environment.PASSWORD }`);
 
 });
 
-test(
-    'Test for BlazeDemo', { tag: '@TC_001' }, async ({ page }) => {
+test('Test for BlazeDemo', { tag: '@TC_001' }, async ({ page }) => {
 
     const bookingPage = new BookingsPage(page);
 
@@ -41,7 +39,10 @@ test(
 
 });
 
-test.afterEach( async({ page }) => {
+test.afterEach( async({ page }, testInfo) => {
+
+   const bp = new BasePage(page);
+   await bp.takeScreenshot(page, testInfo);
 
     console.log(`Test completed`);
 

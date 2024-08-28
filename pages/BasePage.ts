@@ -1,4 +1,4 @@
-import { Page, expect, Locator } from '@playwright/test';
+import { Page, expect, Locator, TestInfo } from '@playwright/test';
 
 export class BasePage {
 
@@ -26,6 +26,18 @@ export class BasePage {
 
     async expectVisible(element: Locator): Promise<void> {
         await expect(element).toBeVisible();
+    }
+
+    async takeScreenshot(page: Page, testInfo: TestInfo): Promise<void> {
+        const screenshot = await page.screenshot({
+            path: `screnshots/screenshot_${testInfo.tags}.png`, 
+            fullPage: true
+        });
+        
+        await testInfo.attach('screenshots', {
+            body: screenshot,
+            contentType: 'image/png'
+        });
     }
 
 }
