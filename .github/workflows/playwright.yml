@@ -18,8 +18,8 @@ jobs:
         run: npm ci #Install CI dependencies
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps ## Instalación de navegadores
-      - name: Run playwright tests
-        run: npx playwright test ## Comando de ejecución de pruebas
+      - name: Run playwright tests on QA
+        run: npm run env:qa ## Comando de ejecución de pruebas
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
