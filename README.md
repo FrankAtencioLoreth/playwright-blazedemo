@@ -56,8 +56,14 @@ After running tests, you can view the results:
 
 # Environment Configuration
 This project supports multiple environments. Set the test_env environment variable to specify which environment configuration to use
+
+## Mac/Linux
 ```bash
 export test_env=development
+```
+## Windows
+```bash
+set test_env=development
 ```
 
 # Project structure
