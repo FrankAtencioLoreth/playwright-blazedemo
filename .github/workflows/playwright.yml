@@ -18,6 +18,8 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: Enable QA environment variables
+        run: export test_env=qa
       - name: Run playwright tests on QA
         run: npm run env:qa
       - uses: actions/upload-artifact@v4
