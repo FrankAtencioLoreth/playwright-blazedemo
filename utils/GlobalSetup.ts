@@ -1,5 +1,6 @@
 import { FullConfig } from "@playwright/test";
 import dotenv from "dotenv";
+import path from "path";
 
 /**
  * Global Setup Function
@@ -13,15 +14,25 @@ import dotenv from "dotenv";
  */
 async function globalSetup( config: FullConfig ) {
     
-    // Check if a specific test environment is specified
-    if( process.env.test_env ) {
+     // Determine the environment to load
+    const testEnv = process.env.test_env || "qa"; // Default to 'qa' if not specified
+    const envFilePath = path.resolve(process.cwd(), `.env.${testEnv}`);
+    
+    try {
+    // Load environment variables from the appropriate .env file
+    const result = dotenv.config({
+        path: envFilePath,
+        override: true
+    });
 
-        // Load environment variables from the appropriate .env file based on the test environment
-        dotenv.config({
-            path: `.env.${process.env.test_env}`,
-            override: true
-        });
+    if (result.error) {
+        throw result.error;
+    }
 
+    console.log(`Environment variables loaded from: ${envFilePath}`);
+    } catch (error) {
+    console.error(`Failed to load environment variables from ${envFilePath}:`, error);
+    throw new Error(`Environment setup failed. Ensure the file ".env.${testEnv}" exists.`);
     }
 
 }

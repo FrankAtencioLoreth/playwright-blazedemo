@@ -28,6 +28,9 @@ To run the tests, use the following command:
 ```bash
 npx playwright test
   ```
+```bash
+npx playwright test --ui
+  ```
 
 ## Running a Specific Test
 To run a specific test:
