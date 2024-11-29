@@ -23,7 +23,7 @@ test.beforeEach( async({ page }) => {
 
 });
 
-test.only('Test for BlazeDemo', { tag: ['@TC_001', '@regression'] }, async ({ page }) => {
+test('Test for BlazeDemo', { tag: ['@TC_001', '@regression'] }, async ({ page }) => {
 
     /**
      * Test Case: Test for BlazeDemo
