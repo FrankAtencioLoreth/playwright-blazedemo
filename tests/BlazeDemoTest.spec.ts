@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { BookingsPage } from '../pages/BookingsPage';
+import { BookingsPage } from '../src/pages/BookingsPage';
 import Environment from '../utils/Environment';
-import { BasePage } from '../pages/BasePage';
+import { BasePage } from '../src/pages/BasePage';
 
 /**
  * Test Suite for BlazeDemo
