@@ -5,3 +5,6 @@ node_modules/
 /playwright/.cache/
 /test-examples/
 /screenshots/
+.sonar/
+/.sonar/
+screenshots/
